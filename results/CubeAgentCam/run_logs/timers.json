@@ -1,0 +1,42 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1647934259",
+        "python_version": "3.9.7 (default, Sep 16 2021, 16:59:28) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\Bavo_\\anaconda3\\Scripts\\mlagents-learn config/CubeAgent.yaml --run-id=CubeAgentCam --resume",
+        "mlagents_version": "0.28.0",
+        "mlagents_envs_version": "0.28.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.1+cu110",
+        "numpy_version": "1.20.3",
+        "end_time_seconds": "1647934328"
+    },
+    "total": 68.6975404,
+    "count": 1,
+    "self": 0.01867289999999855,
+    "children": {
+        "run_training.setup": {
+            "total": 0.2664485000000001,
+            "count": 1,
+            "self": 0.2664485000000001
+        },
+        "TrainerController.start_learning": {
+            "total": 68.412419,
+            "count": 1,
+            "self": 0.00012810000001195476,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 68.4122704,
+                    "count": 1,
+                    "self": 68.4122704
+                },
+                "TrainerController._save_models": {
+                    "total": 2.049999999087504e-05,
+                    "count": 1,
+                    "self": 2.049999999087504e-05
+                }
+            }
+        }
+    }
+}
