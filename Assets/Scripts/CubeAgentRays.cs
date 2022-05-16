@@ -25,7 +25,7 @@ public class CubeAgentRays : Agent
         }
 
         if (Target == null) Target = GameObject.Find("Target");
-        if (GreenZone == null) Target = GameObject.Find("GreenZone");
+        if (GreenZone == null) GreenZone = GameObject.Find("GreenZone"); // HIer was fout! kende GreenZone toe aan Target!!
 
         // verplaats de target naar een nieuwe willekeurige locatie 
         Target.transform.localPosition = new Vector3(Random.value * 8 - 4, 0.5f, Random.value * 8 - 4);
