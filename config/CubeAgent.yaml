@@ -110,7 +110,7 @@ behaviors:
 
     keep_checkpoints: 5
 
-    max_steps: 2500000
+    max_steps: 300000
 
     time_horizon: 64
 

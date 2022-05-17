@@ -6,7 +6,6 @@ public class GameManager : MonoBehaviour
 {
     private GameObject Agent;
     private GameObject Obstacle;
-    private GameObject Road;
 
     private Vector3 obstacleStartPos;
 
@@ -19,7 +18,6 @@ public class GameManager : MonoBehaviour
     {
         Agent = GameObject.FindGameObjectWithTag("Agent");
         Obstacle = GameObject.FindGameObjectWithTag("Obstacle");
-        Road = GameObject.FindGameObjectWithTag("Road");
 
         obstacleStartPos = Obstacle.transform.localPosition;
 

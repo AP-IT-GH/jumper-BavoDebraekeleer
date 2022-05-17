@@ -7,16 +7,17 @@ using Unity.MLAgents.Actuators;
 
 public class CubeAgentRaysJumper : Agent
 {
-    private Transform agentStartTrans;
+    //private Transform agentStartTrans;
     private bool isGrounded = true;
     private Rigidbody body;
     private bool isObstaclePassed = false;
+    [SerializeField] public float jumpSpeed = 10.0f;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        agentStartTrans = this.transform;
+        //agentStartTrans = this.transform;
         body = GetComponent<Rigidbody>();
     }
 
@@ -39,7 +40,6 @@ public class CubeAgentRaysJumper : Agent
     }
 
     // Acties en Beloningen
-    [SerializeField] public float jumpSpeed = 10.0f;
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
         if (actionBuffers.ContinuousActions[0] == 1.0f)
