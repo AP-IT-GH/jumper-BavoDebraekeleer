@@ -85,7 +85,7 @@ Stap 2 is de juiste ML Agent scripts toevoegen aan de Agent als ook enkele scrip
 
 1. Maak een script aan genaamd **CubeAgentRaysJumper**. Deze gaat de Agent aansturen en de nodige functies toevoegen voor het leerproces.
 	> Voeg bovenaan de ML Agents dependencies toe.
-	> ```c#
+	```c#
 		using Unity.MLAgents;
 		using Unity.MLAgents.Sensors;
 		using Unity.MLAgents.Actuators;
@@ -96,7 +96,7 @@ Stap 2 is de juiste ML Agent scripts toevoegen aan de Agent als ook enkele scrip
 	> - Een `isGrounded` boolean om na te gaan wanneer de Agent op de baan staat.
 	> - Een `isObstaclePassed` boolean om na te gaan wanneer een obstakel voorbij is gegaan zonder de Agent te raken.
 	> - Een `jumpSpeed` om de snelheid en dus hoogte van het springen te kunnen instellen. Maak deze `[SerializeField]` om herinstelbaar te maken in de Unity editor.
-	> ```c#
+	```c#
 		private bool isGrounded = true;
 		private Rigidbody body;
 		private bool isObstaclePassed = false;
@@ -104,7 +104,7 @@ Stap 2 is de juiste ML Agent scripts toevoegen aan de Agent als ook enkele scrip
 	```
 	
 	> Bij het initialiseren kunnen we nu het Rigidbody component opvragen om deze eenvoudiger aan te spreken.
-	> ```c#
+	```c#
 		public override void Initialize()
 		{
 			base.Initialize();
@@ -113,7 +113,7 @@ Stap 2 is de juiste ML Agent scripts toevoegen aan de Agent als ook enkele scrip
 	```
 	
 	> We willen ook dat de Agent voor het Machine Learning zijn eigen positie kent. Zo weet deze wanneer en hoe hoog deze kan springen en een bonus punt pakt.
-	> ```c#
+	```c#
 		public override void CollectObservations(VectorSensor sensor)
 		{
 			sensor.AddObservation(this.transform.localPosition);
@@ -125,7 +125,7 @@ Stap 2 is de juiste ML Agent scripts toevoegen aan de Agent als ook enkele scrip
 	> We willen echter enkel dat er gesprongen kan worden wanneer de AGent op de baan staat `if (isGrounded)`.
 	> Het is belangrijk deze boolean vervolgens op false te zetten omdat de Agent nu aan het springen is.
 	> Voor een succes wordt er gebruik gemaakt van een flag boolean die true kan gezet worden vanuit het Game Manager script via een public functie.
-	> ```c#
+	```c#
 		public void ObstacleHasPassed()
 		{
 			isObstaclePassed = true;
@@ -133,7 +133,7 @@ Stap 2 is de juiste ML Agent scripts toevoegen aan de Agent als ook enkele scrip
 	```
 	> Wanneer deze true is wordt een beloning van 1 toegevoegd, de flag wordt gereset naar false, en de Episode wordt beëindigd.
 	> We voegen hier ook logging toe met kleur om wat er gebeurd in het script visueel te maken tijdens het leren.
-	> ```c#
+	```c#
 		public override void OnActionReceived(ActionBuffers actionBuffers)
 		{
 			if (actionBuffers.ContinuousActions[0] == 1.0f)
@@ -161,7 +161,7 @@ Stap 2 is de juiste ML Agent scripts toevoegen aan de Agent als ook enkele scrip
 	> Het tweede is de failure "beloning". Wanneer een Obstacle geraakt wordt is de totale beloning -1, ongeacht bonus punten. Het obstakel wordt gereset en de Episode beëindigd.
 	> Wanneer een bonus punt gepakt wordt zal de beloning met 0.5 verhoogd worden. Dit is een `AddReward` dus dit is bovenop de eventuele succes beloning van 1.
 	> Het Bonus object wordt hier eveneens, via het Obstacle script die ook hiervoor gebruikt wordt, gereset.
-	> ```c#
+	```c#
 		private void OnCollisionEnter(Collision collision)
 		{
 			Debug.Log($"Collision with {collision.gameObject.name}");
@@ -191,7 +191,7 @@ Stap 2 is de juiste ML Agent scripts toevoegen aan de Agent als ook enkele scrip
 	
 	> Als laatste is er nog de Heuristic methode die toelaat de leeromgeving handmatig te testen.
 	> Als invoer voor het springen gebruiken we de standaard **Jump** button, op een toetsenbord de spatiebalk.
-	> ```c#
+	```c#
 		public override void Heuristic(in ActionBuffers actionsOut)
 		{
 			var continuousActionsOut = actionsOut.ContinuousActions;
@@ -217,7 +217,7 @@ Stap 2 is de juiste ML Agent scripts toevoegen aan de Agent als ook enkele scrip
 	
 	> Het **Behavior Parameters** script heeft vervolgens behavior parameters nodig in de vorm van een .yaml file.
 	> Maak in de project folder `./MLAgents/config/CubeAgent.yaml` met volgende parameters:
-	```yaml
+	```
 		behaviors:
 		
 			CubeAgentRay:
@@ -313,7 +313,7 @@ Stap 2 is de juiste ML Agent scripts toevoegen aan de Agent als ook enkele scrip
 	> - Instelbare minimum en maximum waarden, `minSpeed` en `maxSpeed`, voor de willekeurige snelheidstoekenning.
 	> - Een extra variabele `obstacleSpeedMultiplier` om de snelheid vervolgens in het algemeen te kunnen vertragen of versnellen
 	> - En een variabele `startPos` die de oorspronkelijke positie van het obstakel bijhoud om naar te kunnen resetten.
-	> ```c#
+	```c#
 		private float obstacleSpeed = 0.0f;
 		[SerializeField] private int minSpeed = 2;
 		[SerializeField] private int maxSpeed = 5;
@@ -323,7 +323,7 @@ Stap 2 is de juiste ML Agent scripts toevoegen aan de Agent als ook enkele scrip
 	
 	> Bij het starten wordt eerst de start positie van het object opgeslagen.
 	> Vervolgens wordt een willekeurige snelheid bepaald met volgende functie:
-	> ```c#
+	```c#
 		private void SetRandomSpeed()
 		{
 			obstacleSpeed = Random.Range(minSpeed, maxSpeed + 1) * obstacleSpeedMultiplier;
@@ -331,7 +331,7 @@ Stap 2 is de juiste ML Agent scripts toevoegen aan de Agent als ook enkele scrip
 		}
 	```
 	> De start ziet er als volgt uit:
-	> ```c#
+	```c#
 		void Start()
 		{
 			startPos = transform.position;
@@ -340,7 +340,7 @@ Stap 2 is de juiste ML Agent scripts toevoegen aan de Agent als ook enkele scrip
 	```
 	
 	> Vervolgens gaan we in de Update methode het object voorwaarts laten bewegen aan de hand van de willekeurige snelheid.
-	> ```c#
+	```c#
 		void Update()
 		{
 			transform.position += obstacleSpeed * Time.deltaTime * transform.forward;
@@ -349,7 +349,7 @@ Stap 2 is de juiste ML Agent scripts toevoegen aan de Agent als ook enkele scrip
 	
 	> Als laatste is er de public Reset methode om vanuit andere script te kunnen aanroepen.
 	> Hiermee wordt het object naar zijn start positie teruggezet en een nieuwe willekeurige snelheid bepaald.
-	> ```c#
+	```c#
 		public void Reset()
 		{
 			transform.position = startPos;
@@ -365,7 +365,7 @@ Stap 2 is de juiste ML Agent scripts toevoegen aan de Agent als ook enkele scrip
 	> - De objecten `Agent` `Obstacle` en `Bonus` om te kunnen aanspreken.
 	> - De start posities `obstacleStartPos` en `bonusStartPos` van Obstacle en Bonus.
 	> - [Optioneel] Een bool om de bonus punten in en uit te kunnen schakelen.
-	> ```c#
+	```c#
 		private GameObject Agent;
 		private GameObject Obstacle;
 
@@ -378,7 +378,7 @@ Stap 2 is de juiste ML Agent scripts toevoegen aan de Agent als ook enkele scrip
 	
 	> De start methode zoekt de objecten aan de hand van de Tags.
 	> [Optioneel] Het Bonus object wordt enkel gezocht als dit is ingeschakeld. Dit om errors te voorkomen als deze niet aanwezig is in de scène.
-	> ```c#
+	```c#
 		void Start()
 		{
 			Agent = GameObject.FindGameObjectWithTag("Agent");
@@ -398,7 +398,7 @@ Stap 2 is de juiste ML Agent scripts toevoegen aan de Agent als ook enkele scrip
 	> In het geval van het Obstacle wordt dit doorgegeven aan het CubeAgentRaysJumper script om de succes succes flag te zetten.
 	> Verder wordt in beide gevallen de reset methode van de objecten aangeroepen om deze te resetten.
 	> [Optioneel] De checks op het Bonus object worden uiteraard enkel uitgevoerd als dit is ingeschakeld. Dit om errors te voorkomen.
-	> ```c#
+	```c#
 		void Update()
 		{
 			if(Obstacle.transform.localPosition.z < obstacleStartPos.z - 18.0f)
@@ -458,8 +458,10 @@ Na het succesvol trainen en het produceren van een .onnx file kan je deze toevoe
 1. Navigeer naar de project map.
 2. Kopieer het bestand `./results/CubeAgentJumper/CubeAgentRay.onnx` naar `./Assets/Agent Models/`.
 3. In de Unity editor sleep dit bestand in het **Agent** object, in het **Behavior Parameters** component, in het **Model** veld.
-4. Wanneer nu op **Play** wordt gedrukt zal dit model automatisch spelen. 
 	> ![](pictures/script_BehaviorParameters.png ':size=100%')
+
+4. Wanneer nu op **Play** wordt gedrukt zal dit model automatisch spelen. 
+
 
 ---
 
