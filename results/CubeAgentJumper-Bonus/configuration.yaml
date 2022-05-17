@@ -75,10 +75,23 @@ behaviors:
           memory: null
           goal_conditioning_type: hyper
           deterministic: false
+      curiosity:
+        gamma: 0.99
+        strength: 5.0
+        network_settings:
+          normalize: false
+          hidden_units: 256
+          num_layers: 2
+          vis_encode_type: simple
+          memory: null
+          goal_conditioning_type: hyper
+          deterministic: false
+        learning_rate: 0.001
+        encoding_size: 256
     init_path: null
     keep_checkpoints: 5
     checkpoint_interval: 500000
-    max_steps: 1000000
+    max_steps: 2500000
     time_horizon: 64
     summary_freq: 2000
     threaded: true
@@ -466,7 +479,7 @@ checkpoint_settings:
   run_id: CubeAgentJumper-Bonus
   initialize_from: null
   load_model: false
-  resume: false
+  resume: true
   force: false
   train_model: false
   inference: false

@@ -23,12 +23,12 @@ public class CubeAgentRaysJumper : Agent
     public override void OnEpisodeBegin()
     {
         // plaats en beweging resetten
-        if (this.transform.localPosition.y < 0)
-        {
-            this.transform.localPosition = agentStartTrans.localPosition;
-            this.transform.localRotation = agentStartTrans.localRotation;
-            body.velocity = new Vector3(0, 0, 0);
-        }
+        //if (this.transform.localPosition.y < 0)
+        //{
+        //    this.transform.localPosition = agentStartTrans.localPosition;
+        //    this.transform.localRotation = agentStartTrans.localRotation;
+        //    body.velocity = new Vector3(0, 0, 0);
+        //}
     }
 
     // Observeren van de omgeving

@@ -97,10 +97,20 @@ behaviors:
         gamma: 0.90
 
         strength: 1.0
+        
+      curiosity:
+        
+        strength: 5.0
+        
+        gamma: 0.99
+        
+        encoding_size: 256
+        
+        learning_rate: 1e-3
 
     keep_checkpoints: 5
 
-    max_steps: 10000000
+    max_steps: 2500000
 
     time_horizon: 64
 

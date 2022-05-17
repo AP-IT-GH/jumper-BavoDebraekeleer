@@ -258,12 +258,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3433968291615888054, guid: 995f3150d6063a14e800e0e2bf17691d, type: 3}
+      propertyPath: maxSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433968291615888054, guid: 995f3150d6063a14e800e0e2bf17691d, type: 3}
       propertyPath: minSpeed
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874197997990183004, guid: 995f3150d6063a14e800e0e2bf17691d, type: 3}
+      propertyPath: maxSpeed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7874197997990183004, guid: 995f3150d6063a14e800e0e2bf17691d, type: 3}
       propertyPath: minSpeed
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8189565924338646306, guid: 995f3150d6063a14e800e0e2bf17691d, type: 3}
       propertyPath: m_RootOrder
@@ -317,8 +325,71 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9113132198621581970, guid: 995f3150d6063a14e800e0e2bf17691d, type: 3}
+      propertyPath: m_RayLength
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113132198621581970, guid: 995f3150d6063a14e800e0e2bf17691d, type: 3}
+      propertyPath: m_SensorName
+      value: RayPerceptionSensor_Straight
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113132198621581970, guid: 995f3150d6063a14e800e0e2bf17691d, type: 3}
+      propertyPath: m_MaxRayDegrees
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113132198621581970, guid: 995f3150d6063a14e800e0e2bf17691d, type: 3}
+      propertyPath: m_RaysPerDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113132198621581970, guid: 995f3150d6063a14e800e0e2bf17691d, type: 3}
+      propertyPath: m_EndVerticalOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113132198621581970, guid: 995f3150d6063a14e800e0e2bf17691d, type: 3}
+      propertyPath: m_ObservationStacks
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113132198621581970, guid: 995f3150d6063a14e800e0e2bf17691d, type: 3}
+      propertyPath: m_StartVerticalOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113132198621581972, guid: 995f3150d6063a14e800e0e2bf17691d, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: 20a23a5a278172346abbab4f5ef1ac26, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 995f3150d6063a14e800e0e2bf17691d, type: 3}
+--- !u!1 &1743425542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9113132198621581971, guid: 995f3150d6063a14e800e0e2bf17691d, type: 3}
+  m_PrefabInstance: {fileID: 711776725}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1743425552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743425542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: RayPerceptionSensor_Up
+  m_DetectableTags: []
+  m_RaysPerDirection: 1
+  m_MaxRayDegrees: 11
+  m_SphereCastRadius: 0.5
+  m_RayLength: 7
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967291
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+  m_StartVerticalOffset: 0
+  m_EndVerticalOffset: 5
 --- !u!1 &1751700744
 GameObject:
   m_ObjectHideFlags: 0
